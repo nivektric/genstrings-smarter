@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>genstrings-smarter-bundle.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>genstrings-smarter-framework.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>genstrings-smarter.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>53C429B11D21C32900AD8DB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53C429BF1D21C3C700AD8DB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53C42A131D21CCF200AD8DB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53C42A261D21CE9400AD8DB4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

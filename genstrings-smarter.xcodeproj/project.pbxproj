@@ -18,6 +18,7 @@
 		53C42A2A1D21CE9400AD8DB4 /* GenStringsSmarterFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 53C42A291D21CE9400AD8DB4 /* GenStringsSmarterFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53C42A341D21CEF900AD8DB4 /* GenStringsSmarter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C42A331D21CEF900AD8DB4 /* GenStringsSmarter.swift */; };
 		53C42A351D21CF3900AD8DB4 /* GenStringsSmarterFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 53C42A271D21CE9400AD8DB4 /* GenStringsSmarterFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C42A371D21D32800AD8DB4 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C42A361D21D32800AD8DB4 /* SourceKittenFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		53C42A291D21CE9400AD8DB4 /* GenStringsSmarterFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenStringsSmarterFramework.h; sourceTree = "<group>"; };
 		53C42A2B1D21CE9400AD8DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53C42A331D21CEF900AD8DB4 /* GenStringsSmarter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenStringsSmarter.swift; sourceTree = "<group>"; };
+		53C42A361D21D32800AD8DB4 /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SourceKittenFramework.framework; path = "genstrings-smarter-bundle/Carthage/Build/Mac/SourceKittenFramework.framework"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53C42A371D21D32800AD8DB4 /* SourceKittenFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +159,7 @@
 		53C42A281D21CE9400AD8DB4 /* GenStringsSmarterFramework */ = {
 			isa = PBXGroup;
 			children = (
+				53C42A361D21D32800AD8DB4 /* SourceKittenFramework.framework */,
 				53C42A291D21CE9400AD8DB4 /* GenStringsSmarterFramework.h */,
 				53C42A2B1D21CE9400AD8DB4 /* Info.plist */,
 				53C42A331D21CEF900AD8DB4 /* GenStringsSmarter.swift */,
@@ -483,6 +487,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/genstrings-smarter-bundle/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = GenStringsSmarterFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -506,6 +514,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/genstrings-smarter-bundle/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = GenStringsSmarterFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

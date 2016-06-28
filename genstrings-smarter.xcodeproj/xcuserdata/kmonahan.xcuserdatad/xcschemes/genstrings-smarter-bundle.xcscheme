@@ -61,6 +61,12 @@
             ReferencedContainer = "container:genstrings-smarter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/kmonahan/src/ios/CareTRx-iOS/CareTRx/CareTRx/ViewsAndControllers/Regular/Login/LoginViewController.swift"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

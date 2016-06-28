@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53C42A131D21CCF200AD8DB4"
+               BlueprintIdentifier = "53C42A261D21CE9400AD8DB4"
                BuildableName = "GenStringsSmarterFramework.framework"
                BlueprintName = "GenStringsSmarterFramework"
                ReferencedContainer = "container:genstrings-smarter.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53C42A131D21CCF200AD8DB4"
+            BlueprintIdentifier = "53C42A261D21CE9400AD8DB4"
             BuildableName = "GenStringsSmarterFramework.framework"
             BlueprintName = "GenStringsSmarterFramework"
             ReferencedContainer = "container:genstrings-smarter.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53C42A131D21CCF200AD8DB4"
+            BlueprintIdentifier = "53C42A261D21CE9400AD8DB4"
             BuildableName = "GenStringsSmarterFramework.framework"
             BlueprintName = "GenStringsSmarterFramework"
             ReferencedContainer = "container:genstrings-smarter.xcodeproj">

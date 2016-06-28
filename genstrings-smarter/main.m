@@ -16,7 +16,13 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         NSLog(@"Hello, World!");
 
-        [[[GenStringsSmarter alloc] init] run];
+        NSMutableArray *args = [NSMutableArray arrayWithCapacity:argc];
+        for (int i = 1; i < argc; i++) {
+            NSString *str = [[NSString alloc] initWithCString:argv[i] encoding:NSUTF8StringEncoding];
+            [args addObject:str];
+        }
+
+        [[[GenStringsSmarter alloc] init] run: args];
     }
     return 0;
 }

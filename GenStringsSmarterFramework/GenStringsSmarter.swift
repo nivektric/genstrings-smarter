@@ -13,33 +13,59 @@ extension NSData {
 
     subscript(range: Range<Int64>) -> String? {
         var pointer: UnsafeMutablePointer<Void> = nil
-        let length = range.endIndex - range.startIndex
-        let nsRange: NSRange = NSMakeRange(Int(range.startIndex), Int(length))
+        let length = Int(range.endIndex - range.startIndex)
+        let nsRange: NSRange = NSMakeRange(Int(range.startIndex), length)
         getBytes(&pointer, range: nsRange)
 
-        let data = NSData(bytes: &pointer, length: Int(length))
+        let data = NSData(bytes: &pointer, length: length)
+
         return String(data: data, encoding: NSUTF8StringEncoding)
+    }
+
+}
+
+extension String {
+
+    func trimQuotes() -> String {
+        if hasPrefix("\"") && hasSuffix("\"") {
+            if characters.count > 1 {
+                return substringWithRange(startIndex.advancedBy(1)..<endIndex.advancedBy(-1))
+            } else {
+                return ""
+            }
+        } else {
+            return self
+        }
+    }
+
+    func isQuoted() -> Bool {
+        return characters.count > 1 && hasPrefix("\"") && hasSuffix("\"")
     }
 
 }
 
 @objc public class GenStringsSmarter: NSObject {
 
+    var fileHandles = [String : NSFileHandle]()
+
     public func run(args: [String]) {
-        guard args.count == 1 else {
-            print("Must provide a file name.")
+        guard args.count == 2 else {
+            print("Must provide an input filename and an output filename.")
             return
         }
-        let filename = args[0]
-        guard let file = File(path: filename) else {
+        let inputFilename = args[0]
+        guard let file = File(path: inputFilename) else {
             print("Must specify a valid file name.")
             return
         }
 
-        guard let data = NSData(contentsOfFile: filename) else {
-            print("No data found in file: \(filename)")
+        guard let data = NSData(contentsOfFile: inputFilename) else {
+            print("No data found in file: \(inputFilename)")
             return
         }
+
+        let outputFilename = args[1]
+
 
         let structure = Structure(file: file)
 
@@ -54,8 +80,54 @@ extension NSData {
 
         let localizedString = calls.filter { $0.name == "NSLocalizedString" }
 
-        print("extracted calls: \(localizedString)")
+        for call in localizedString {
+            writeCall(call, path: outputFilename)
+        }
+    }
 
+    func writeCall(call: FunctionCall, path: String) {
+        if !NSFileManager.defaultManager().fileExistsAtPath(path) {
+            guard NSFileManager.defaultManager().createFileAtPath(path, contents: nil, attributes: nil) else {
+                print("Output file not found, and unable to create file: \(path)")
+                return
+            }
+        }
+
+        guard let fileHandle = NSFileHandle(forWritingAtPath: path) else {
+            print("Unable to get handle to outputfile: \(path)")
+            return
+        }
+        defer {
+            fileHandle.closeFile()
+        }
+
+        fileHandle.seekToEndOfFile()
+
+        var comment = call.parameterValueWithName("comment")?.trimQuotes() ?? ""
+        if comment.isEmpty {
+            comment = "No comment provided by engineer."
+        }
+
+        let key = call.parameterValueWithName("") ?? ""
+        if !key.isQuoted() {
+            print("key is not a string literal: \(key)")
+            return
+        }
+
+        let value = call.parameterValueWithName("value") ?? key
+        if !value.isQuoted() {
+            print("value is not a string literal: \(value)")
+        }
+
+        var str = "/* \(comment) */\n"
+        str += key + " = " + value + ";\n\n"
+
+        guard let data = str.dataUsingEncoding(NSUTF8StringEncoding) else {
+            print("Error processing call: \(call)")
+            return
+        }
+
+        fileHandle.writeData(data)
     }
 
     func extractFunctionCalls(input: SourceKitRepresentable, data: NSData) -> [FunctionCall] {
@@ -138,6 +210,10 @@ struct FunctionCall: CustomStringConvertible {
         }
         str += ")"
         return str
+    }
+
+    func parameterValueWithName(name: String) -> String? {
+        return parameters.filter { $0.name == name }.first?.body
     }
 
 }

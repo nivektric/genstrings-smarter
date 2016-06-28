@@ -66,6 +66,10 @@
             argument = "/Users/kmonahan/src/ios/CareTRx-iOS/CareTRx/CareTRx/ViewsAndControllers/Regular/Login/LoginViewController.swift"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/kmonahan/Downloads/Localizable.strings"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>

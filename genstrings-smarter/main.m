@@ -13,9 +13,6 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
-
         NSMutableArray *args = [NSMutableArray arrayWithCapacity:argc];
         for (int i = 1; i < argc; i++) {
             NSString *str = [[NSString alloc] initWithCString:argv[i] encoding:NSUTF8StringEncoding];

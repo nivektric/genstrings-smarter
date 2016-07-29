@@ -12,12 +12,13 @@ import SourceKittenFramework
 extension NSData {
 
     subscript(range: Range<Int64>) -> String? {
-        var pointer: UnsafeMutablePointer<Void> = nil
         let length = Int(range.endIndex - range.startIndex)
+        let pointer: UnsafeMutablePointer<Void> = UnsafeMutablePointer<Void>.alloc(length)
         let nsRange: NSRange = NSMakeRange(Int(range.startIndex), length)
-        getBytes(&pointer, range: nsRange)
+        getBytes(pointer, range: nsRange)
+        pointer.dealloc(length)
 
-        let data = NSData(bytes: &pointer, length: length)
+        let data = NSData(bytes: pointer, length: length)
 
         return String(data: data, encoding: NSUTF8StringEncoding)
     }
@@ -66,10 +67,11 @@ extension String {
 
         let outputFilename = args[1]
 
+        print("Running with args: ")
+        print("inputFile = \(inputFilename)")
+        print("outputFile = \(outputFilename)")
 
         let structure = Structure(file: file)
-
-        print("structure = \(structure)")
 
         guard let substructure = structure.dictionary["key.substructure"] else {
             print("Received invalid structure")
@@ -182,8 +184,8 @@ extension String {
                 where kind == "source.lang.swift.decl.var.parameter"
                 else { continue }
 
-            let name = (nameLength > 0 ? data[nameOffset..<nameOffset+nameLength] : "") ?? ""
-            let body = (bodyLength > 0 ? data[bodyOffset..<bodyOffset+bodyLength] : "") ?? ""
+            let name = (nameLength > 0 ? data[nameOffset..<nameOffset + nameLength] : "") ?? ""
+            let body = (bodyLength > 0 ? data[bodyOffset..<bodyOffset + bodyLength] : "") ?? ""
 
             parameters.append(Parameter(name: name, body: body))
         }

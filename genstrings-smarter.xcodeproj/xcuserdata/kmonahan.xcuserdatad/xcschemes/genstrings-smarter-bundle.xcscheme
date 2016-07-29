@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/kmonahan/src/ios/CareTRx-iOS/CareTRx/CareTRx/ViewsAndControllers/Regular/Login/LoginViewController.swift"
+            argument = "/Users/kmonahan/src/ios/CareTRx-iOS/CareTRx/CareTRx/AppDelegate.swift"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
